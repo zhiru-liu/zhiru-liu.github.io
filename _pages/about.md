@@ -19,10 +19,10 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Hi there! I'm a PhD student in the Applied Physics department at Stanford. My advisor is [Benjamin Good](https://bgoodlab.github.io/). My research interest lies at the intersection of evolutionary dynamics, statistical physics and microbial genomics. You can find a list of my publications [here](/publications/).
+Hi there! I'm a PhD student in the Applied Physics department at Stanford University. My advisor is [Benjamin Good](https://bgoodlab.github.io/). My research interest lies at the intersection of evolutionary dynamics, statistical physics and microbial genomics. You can find a list of my publications [here](/publications/).
 
-In our recent [paper](https://www.biorxiv.org/content/10.1101/2022.08.24.505183v2), we thoroughly quantified the dynamics of bacterial recombination (i.e. horizontal gene transfer within a species) in the human gut microbiome. Beyond answering the basic &#40;and surprisingly subtle&#41; question, "which species recombines the most?", we found rich patterns of heterogeneous rates within species, measured the recombination barrier due to sequence divergence, and identified recombination transfers under selection, both within individual hosts and across the broader population.
+In our recent [paper](https://www.biorxiv.org/content/10.1101/2022.08.24.505183v2), we thoroughly quantified the dynamics of bacterial recombination (i.e. horizontal gene transfer within a species) in the human gut microbiome. Beyond answering the basic &#40;and surprisingly subtle&#41; question, "which species recombines the most?", we discovered rich patterns that shed lights on the heterogeneity of recombination rates, barriers to gene flow, and the interaction between selection and recombination, both within individual hosts and across the broader population.
 
-I'm also developing new theoretical tools for understanding how the patterns of genetic diversity is shaped by the interplay between recombination, selection and genetic drift.
+In addition to my data explorations, I'm developing new theoretical tools for understanding how genetic linkage is shaped by the interplay between recombination, selection and genetic drift.
 
 Prior to graduate school, I studied physics, math and computer science at University of Illinois at Urbana-Champaign (because I can't make up my mind). I was thinking about questions related to phylogenetic trees under the guidance of [Nigel Goldenfeld](https://guava.physics.ucsd.edu/~nigel/).
