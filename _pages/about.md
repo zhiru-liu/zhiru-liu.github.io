@@ -21,7 +21,7 @@ social: true  # includes social icons at the bottom of the page
 
 Hi there! I'm a PhD student in the Applied Physics department at Stanford University. My advisor is [Benjamin Good](https://bgoodlab.github.io/). My research interest lies at the intersection of evolutionary dynamics, statistical physics and microbial genomics. You can find a list of my publications [here](/publications/).
 
-In our recent [paper](https://www.biorxiv.org/content/10.1101/2022.08.24.505183v2), we thoroughly quantified the dynamics of bacterial recombination (i.e. horizontal gene transfer within a species) in the human gut microbiome. Beyond answering the basic &#40;and surprisingly subtle&#41; question, "which species recombines the most?", we discovered rich patterns that shed lights on the heterogeneity of recombination rates, barriers to gene flow, and the interaction between selection and recombination, both within individual hosts and across the broader population.
+In our recent [PLOS Bio paper](https://doi.org/10.1371/journal.pbio.3002472), we thoroughly quantified the dynamics of bacterial recombination (i.e. horizontal gene transfer within a species) in the human gut microbiome. Beyond answering the basic &#40;and surprisingly subtle&#41; question, "which species recombines the most?", we discovered rich patterns that shed lights on the heterogeneity of recombination rates, barriers to gene flow, and the interaction between selection and recombination, both within individual hosts and across the broader population.
 
 In addition to my data explorations, I'm developing new theoretical tools for understanding how genetic linkage is shaped by the interplay between recombination, selection and genetic drift.
 
