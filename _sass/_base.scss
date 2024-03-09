@@ -476,15 +476,18 @@ footer.sticky-bottom {
   padding-bottom: 3rem;
 
   h1 {
-    color: var(--global-theme-color);
-    font-size: 5rem;
+    //zhiru: can change this to make the blog title less annoyingly big
+    // using hex color
+    color: #ffd45c;
+    //color: var(--global-theme-color);
+    font-size: 1.5rem;
   }
 }
 
 .tag-category-list {
   border-bottom: 1px solid var(--global-divider-color);
   text-align: center;
-  padding-top: 1rem;
+  //padding-top: 1rem;
 
   ul {
     justify-content: center;
