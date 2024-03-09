@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://zhiru-liu.github.io//sitemap.xml
+Sitemap: https://zhiru-liu.github.io/sitemap.xml
