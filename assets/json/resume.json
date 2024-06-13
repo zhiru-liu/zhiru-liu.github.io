@@ -15,27 +15,27 @@
       "endDate": "2019-05"
     }
   ],
-  "work": [
-    {
-      "name": "Stanford University",
-      "position": "Graduate student, Department of Applied Physics",
-      "startDate": "2019",
-      "summary": "Advisor: Benjamin H. Good"
-    },
-    {
-      "name": "Amazon",
-      "position": "Applied Scientist Intern, Alexa AI",
-      "startDate": "2019-06",
-      "endDate": "2019-09"
-    },
-    {
-      "name": "University of Illinois at Urbana-Champaign",
-      "position": "Undergraduate researcher, Department of Physics",
-      "startDate": "2017",
-      "endDate": "2019",
-      "summary": "Advisor: Nigel Goldenfeld"
-    }
-  ],
+  // "work": [
+  //   {
+  //     "name": "Stanford University",
+  //     "position": "Graduate student, Department of Applied Physics",
+  //     "startDate": "2019",
+  //     "summary": "Advisor: Benjamin H. Good"
+  //   },
+  //   {
+  //     "name": "Amazon",
+  //     "position": "Applied Scientist Intern, Alexa AI",
+  //     "startDate": "2019-06",
+  //     "endDate": "2019-09"
+  //   },
+  //   {
+  //     "name": "University of Illinois at Urbana-Champaign",
+  //     "position": "Undergraduate researcher, Department of Physics",
+  //     "startDate": "2017",
+  //     "endDate": "2019",
+  //     "summary": "Advisor: Nigel Goldenfeld"
+  //   }
+  // ],
   "volunteer": [],
   "awards": [
     {
