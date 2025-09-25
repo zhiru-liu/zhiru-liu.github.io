@@ -19,12 +19,14 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Hi there! I'm a PhD student in the Applied Physics department at Stanford University. My advisor is [Benjamin Good](https://bgoodlab.github.io/). Broadly speaking, my research interest lies at the intersection of evolutionary dynamics, statistical physics and microbial genomics. You can find a list of my publications [here](/publications/).
+Hi there! I'm a postdoctoral fellow in the [Greenbaum Lab](https://www.mskcc.org/research-areas/labs/benjamin-greenbaum) and [Balachandran Lab](https://www.mskcc.org/research-areas/labs/vinod-balachandran) at Memorial Sloan Kettering Cancer Center, where I work on a variety of problems at the intersection of cancer evolution and quantitative immunology.
 
-Most recently, I'm interested in understanding the long-term evolution of human gut bacteria (e.g. on the timescale of early human migrations), as well as developing theoretical tools for predicting the genetic linkage between rare mutations (see our recent [Genetics paper](https://doi.org/10.1093/genetics/iyae145), in collaboration with Anastasia Lyulina).
+Previous to this, I was a PhD student with [Benjamin Good](https://bgoodlab.github.io/) at Stanford University. Broadly speaking, my PhD research lies at the intersection of evolutionary dynamics, statistical physics and microbial genomics. You can find a list of my publications [here](/publications/).
+
+<!-- Most recently, I'm interested in understanding the long-term evolution of human gut bacteria (e.g. on the timescale of early human migrations), as well as developing theoretical tools for predicting the genetic linkage between rare mutations (see our recent [Genetics paper](https://doi.org/10.1093/genetics/iyae145), in collaboration with Anastasia Lyulina). -->
 
 <!-- In our recent [PLOS Bio paper](https://doi.org/10.1371/journal.pbio.3002472), we thoroughly quantified the dynamics of bacterial recombination (i.e. horizontal gene transfer within a species) in the human gut microbiome. Beyond answering the basic &#40;and surprisingly subtle&#41; question, "which species recombines the most?", we discovered rich patterns that shed lights on the heterogeneity of recombination rates, barriers to gene flow, and the interaction between selection and recombination, both within individual hosts and across the broader population. -->
 
 <!-- In addition to my data explorations, I'm developing new theoretical tools for understanding how genetic linkage is shaped by the interplay between recombination, selection and genetic drift. -->
 
-Prior to graduate school, I studied physics, math and computer science at University of Illinois at Urbana-Champaign (because I can't make up my mind). I was thinking about questions related to phylogenetic trees under the guidance of [Nigel Goldenfeld](https://guava.physics.ucsd.edu/~nigel/).
+<!-- Prior to graduate school, I studied physics, math and computer science at University of Illinois at Urbana-Champaign (because I can't make up my mind). I was thinking about questions related to phylogenetic trees under the guidance of [Nigel Goldenfeld](https://guava.physics.ucsd.edu/~nigel/). -->
