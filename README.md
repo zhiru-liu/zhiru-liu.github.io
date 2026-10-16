@@ -26,7 +26,16 @@ img/pubs/                  publication thumbnails, referenced by `preview = {...
   python3 build.py
   ```
 
-  Optional bib fields `pdf`, `code` and `supp` become small links after the venue.
+  Optional bib fields `pdf` and `supp` become small links after the venue.
+  Three optional fields add their own lines under the venue: `code` gives a
+  "Code:" line (e.g. `code = {CP-HMM | https://github.com/zhiru-liu/close_pair_hmm}`;
+  a bare URL is labelled by its last path segment), `highlights` gives a line
+  of short notes (e.g. `Featured article; Cover art (A. Lyulina) | https://...`)
+  and `press` gives a "Coverage:" line of news links. In all three, separate
+  items with `;` and write each as `Text`, `Text | URL` or
+  `Text | URL | hover text`; code and press items always need a URL.
+  Add `hide = {true}` to an entry to keep it in the bib but leave it off the
+  page (the page is a selected list; Google Scholar has the full one).
   A `*` on a name (e.g. `Liu*, Zhiru`) marks equal contribution and a `+`
   (e.g. `Good+, Benjamin H.`) marks equal senior contribution; they render as
   `*` and `†`. Author lists longer than 8 are abbreviated, but every marked

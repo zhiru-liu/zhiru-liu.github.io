@@ -66,7 +66,9 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0 0 .5rem; }
   .pub .thumb img { filter: invert(1) hue-rotate(180deg); }
 }
 .pub .title { font-weight: 600; }
-.pub .authors, .pub .venue { color: var(--muted); font-size: .95rem; }
+.pub .authors, .pub .venue, .pub .code, .pub .highlights, .pub .press { color: var(--muted); font-size: .95rem; }
+/* journal name stands out a little from the muted year / "(preprint)" around it */
+.pub .journal { color: var(--fg); font-style: italic; }
 .pub .me { color: var(--fg); text-decoration: underline; text-underline-offset: .15em; }
 
 /* footer: centered, sits at the bottom of the viewport on short pages */

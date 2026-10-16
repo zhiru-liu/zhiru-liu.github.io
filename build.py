@@ -8,15 +8,24 @@ publications/index.html, plus the copyright year (YEAR:START / YEAR:END) and
 "last updated" date (UPDATED:START / UPDATED:END) in every .html file that has
 them. It also fills in the href and hover title of every <a data-bib="KEY">
 link (e.g. citations on the about page) from the bib entry with that key, so a
-preprint that gets published only needs its bib entry updated. Everything else
+preprint that gets published only needs its bib entry updated, and stamps a
+short hash of style.css onto every stylesheet link (style.css?v=...) so
+browsers pick up CSS changes instead of serving a cached copy. Everything else
 is left for hand editing. Run it before each commit so the footer date is
 current. Uses the standard library only.
 
 Bib fields used: title, author, journal | booktitle, year, month, doi, url,
-pdf, code, supp, preview (an image file name inside img/pubs/). Everything
-else is ignored.
+pdf, supp (small links after the venue), preview (an image file name inside
+img/pubs/), code (a "Code:" line under the venue: items separated by ';',
+each 'Name | URL' or a bare URL), highlights (e.g. "Featured article"; items
+separated by ';', each 'Text', 'Text | URL' or 'Text | URL | hover text') and
+press (news coverage, same syntax but every item needs a URL; rendered after
+a "Coverage:" label). An entry with
+hide = {true} is kept in the bib but left off the page. Everything else is
+ignored.
 """
 import datetime
+import hashlib
 import html
 import re
 import sys
@@ -221,6 +230,31 @@ def link_bib_refs(text, entries):
     return re.sub(r'<a\s[^>]*\bdata-bib="[^"]+"[^>]*>', fix, text)
 
 
+def render_items(e, field, need_url):
+    """Split e[field] on ';' into 'Text | URL | hover' items and render each one.
+
+    Items with a URL become links; without one they stay plain text (or are
+    skipped with a warning when need_url is set).
+    """
+    out = []
+    for item in (p.strip() for p in e.get(field, "").split(";")):
+        if not item:
+            continue
+        parts = [p.strip() for p in item.split("|")] + ["", ""]
+        if not parts[1] and re.match(r"https?://", parts[0]):   # bare URL
+            parts[0], parts[1] = parts[0].rstrip("/").rsplit("/", 1)[-1], parts[0]
+        text, url, hover = delatex(parts[0]), parts[1], delatex(parts[2])
+        if need_url and not url:
+            print(f"warning: {e['_key']}: {field} item {item!r} should be 'Text | URL'", file=sys.stderr)
+            continue
+        title = f' title="{esc(hover)}"' if hover else ""
+        if url:
+            out.append(f'<a href="{esc(url)}"{title}>{esc(text)}</a>')
+        else:
+            out.append(f'<span{title}>{esc(text)}</span>' if title else esc(text))
+    return out
+
+
 def render_entry(e):
     title = delatex(e.get("title", "Untitled"))
     href = entry_href(e)
@@ -230,12 +264,17 @@ def render_entry(e):
     authors_html = render_authors(split_authors(e.get("author", "")))
 
     venue = delatex(e.get("journal") or e.get("booktitle") or "")
+    venue_html = f'<span class="journal">{esc(venue)}</span>' if venue else ""
     if venue.lower() in PREPRINT_SERVERS:
-        venue += " (preprint)"
-    venue_html = esc(", ".join(p for p in (venue, e.get("year", "")) if p))
+        venue_html += " (preprint)"
+    venue_html = ", ".join(p for p in (venue_html, esc(e.get("year", ""))) if p)
     extras = "".join(f' · <a href="{esc(e[f].strip())}">{label}</a>'
-                     for label, f in (("pdf", "pdf"), ("code", "code"), ("supplement", "supp"))
+                     for label, f in (("pdf", "pdf"), ("supplement", "supp"))
                      if e.get(f))
+
+    code = render_items(e, "code", need_url=True)
+    highlights = render_items(e, "highlights", need_url=False)
+    press = render_items(e, "press", need_url=True)
 
     thumb = ""
     preview = e.get("preview", "").strip()
@@ -245,16 +284,22 @@ def render_entry(e):
         else:
             print(f"warning: {e['_key']}: img/pubs/{preview} not found", file=sys.stderr)
 
-    return "\n".join([
+    lines = [
         '    <li class="pub">',
         f'      <div class="thumb">{thumb}</div>',
         '      <div>',
         f'        {title_html}',
         f'        <div class="authors">{authors_html}</div>',
         f'        <div class="venue">{venue_html}{extras}</div>',
-        '      </div>',
-        '    </li>',
-    ])
+    ]
+    if code:
+        lines.append(f'        <div class="code">Code: {" · ".join(code)}</div>')
+    if highlights:
+        lines.append(f'        <div class="highlights">{" · ".join(highlights)}</div>')
+    if press:
+        lines.append(f'        <div class="press">Coverage: {" · ".join(press)}</div>')
+    lines += ['      </div>', '    </li>']
+    return "\n".join(lines)
 
 
 def replace_between(text, start_marker, end_marker, new):
@@ -271,8 +316,13 @@ def sort_key(e):
     return (-year, -month)
 
 
+def hidden(e):
+    return e.get("hide", "").strip().lower() in ("true", "yes", "1")
+
+
 def main():
-    entries = sorted(parse_bib(BIB.read_text(encoding="utf-8")), key=sort_key)
+    all_entries = parse_bib(BIB.read_text(encoding="utf-8"))
+    entries = sorted((e for e in all_entries if not hidden(e)), key=sort_key)
     out, current = [], None
     for e in entries:
         year = e.get("year", "n.d.")
@@ -290,12 +340,16 @@ def main():
     page = replace_between(page, "<!-- PUBS:START", "<!-- PUBS:END -->", "\n" + "\n".join(out) + "\n  ")
     PAGE.write_text(page, encoding="utf-8")
     with_thumbs = sum(1 for e in entries if e.get("preview"))
-    print(f"wrote {len(entries)} publications ({with_thumbs} with thumbnails) to {PAGE.relative_to(ROOT)}")
+    print(f"wrote {len(entries)} publications ({with_thumbs} with thumbnails, "
+          f"{len(all_entries) - len(entries)} hidden) to {PAGE.relative_to(ROOT)}")
 
     today = datetime.date.today()
+    css_version = hashlib.md5((ROOT / "style.css").read_bytes()).hexdigest()[:8]
     touched = []
     for path in sorted(ROOT.glob("**/*.html")):
         original = text = path.read_text(encoding="utf-8")
+        text = re.sub(r'(href=")((?:\.\./)*style\.css)(?:\?v=[0-9a-f]*)?(")',
+                      lambda m: f"{m.group(1)}{m.group(2)}?v={css_version}{m.group(3)}", text)
         if 'data-bib="' in text:
             text = link_bib_refs(text, entries)
         if "<!-- UPDATED:START -->" in text:
